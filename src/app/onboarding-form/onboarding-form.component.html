@@ -1,0 +1,39 @@
+<p>onboarding form </p>
+<div ng-controller="onboardingFormController">
+<form #onboardinForm="ngForm" (ngSubmit) = "submitEmpFormFunc(onboardinForm.value)">
+<div>
+
+    <label> First Name: </label>
+    <input type="text" ngModel name="fname" required/>
+</div>
+<div>
+
+    <label> Last Name: </label>
+    <input type="text" ngModel name="lname" required/>
+</div>
+<div>
+
+    <label> Job Title: </label>
+    <input type="text" ngModel name="jobTitle" required/>
+</div>
+
+<div>
+
+    <label> Employee Address: </label>
+    <input type="text-area" ngModel name="empAddress" required/>
+</div>
+<div>
+
+    <label> Location: </label>
+    <input type="text" ngModel name="jobLocation" required/>
+</div>
+<div>
+
+    <label> Division: </label>
+    <input type="text" ngModel name="jobDivision" required/>
+</div>
+
+<input type="submit"  value="Submit Form">
+
+</form>
+</div>
