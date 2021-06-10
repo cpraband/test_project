@@ -8,6 +8,10 @@ import { AppComponent } from './app.component';
 import { OnboardingFormComponent } from './onboarding-form/onboarding-form.component';
 import { HomePageComponent } from './home-page/home-page.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { OnboardingDAOService } from './onboarding-dao.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,9 +21,10 @@ import { HomePageComponent } from './home-page/home-page.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule 
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [OnboardingDAOService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
