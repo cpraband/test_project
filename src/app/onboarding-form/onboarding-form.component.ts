@@ -11,6 +11,8 @@ import { OnboardingDAOService } from '../onboarding-dao.service';
 
 export class OnboardingFormComponent implements OnInit {
 
+  alert:boolean = false
+  errorAlert:boolean = false
   constructor(private daoservice : OnboardingDAOService) { }
 
   ngOnInit(): void {
@@ -20,11 +22,18 @@ export class OnboardingFormComponent implements OnInit {
   
   submitEmpFormFunc(formValue): void{
   
-    this.daoservice.createTask(formValue).subscribe(
-      response => {console.log('submitted')},
-      error => {console.log(error)}
-      
+    this.daoservice.createTask(formValue.value).subscribe(
+      response => {console.log('submitted')
+      formValue.reset();
+      this.alert=true
+     },
+      error => {console.log(error)
+      this.errorAlert=true
+      formValue.reset();
+      }
     );
+     
+    
   }
 
 }
