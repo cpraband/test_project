@@ -1,0 +1,11 @@
+{
+    "/api": {
+      "target": "https://wviddpe1t9.execute-api.us-east-2.amazonaws.com/dev/userprofile",
+      "secure": true,
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api": ""
+      }
+    }
+  }
+  

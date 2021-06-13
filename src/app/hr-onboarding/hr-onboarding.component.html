@@ -1,0 +1,62 @@
+<form>
+        
+        
+<table class="object">
+    
+    <tr >
+        <td></td>
+        <td style="text-decoration: underline;">
+            Employee Id
+        </td>
+        <td style="text-decoration: underline;">
+            Job Description
+        </td>
+        <td style="text-decoration: underline;">
+            Job Classification
+        </td>
+        <td style="text-decoration: underline;">
+           Joining Date
+        </td>
+        <td style="text-decoration: underline;">
+            Job Location
+        </td>
+        <td style="text-decoration: underline;">
+           Designation
+        </td>
+    </tr>
+       
+<tr class="object" *ngFor="let item of empProfiles ">
+            <input type="checkbox" name="{{item.employeeid}}"/>
+                <td>
+                    {{item.employeeid}}
+                </td>
+
+                <td>
+                    {{item.job_description}}
+                </td>
+                <td>
+                    {{item.job_classification}}
+                </td>
+                <td>
+                    {{item.contract_startdt}}
+                </td>
+                <td>
+                    {{item.job_location}}
+                </td>
+
+                <td>
+                    {{item.designation}}
+                </td>
+
+            </tr>
+
+       
+        
+    
+    </table>
+
+
+    <input  type="submit"  value="Onboard New Hires">
+
+</form>
+

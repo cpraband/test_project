@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+    <span>Welcome  {{auth.usrrole | uppercase }} Staff</span>
+    <div class="spacer"></div>
+          <a *ngIf="auth.usrrole =='hr'" mat-button style="color:pink" routerLink="hr-onboarding">  Start Onboarding</a>
+          <a mat-button *ngIf="auth.usrrole=='recruiter'" style="color:pink" routerLink="onboarding-form"> Add New Hire</a>
+          <a  mat-button style="color:pink" routerLink="newHires"> New Hires</a>
+              
+          <a  mat-button-raised routerLink="logout" style="color:pink" (click)="logout()"> Logout</a>
+          <!-- Navbar content -->
+        <br/>
+    
+       
+        </mat-toolbar>
+        <!-- Footer -->
+       
+    

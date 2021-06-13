@@ -1,5 +1,6 @@
 
-<div ng-controller="onboardingFormController" class="form-group">
+
+<div ng-controller="onboardingFormController" class="form-group" >
 
 <div  *ngIf="alert" class="alert alert-success alert-dismissable fade show" role="alert">
     <strong>Data Saved Successfully.</strong> <br/>
@@ -16,57 +17,57 @@
 <div>
 
     <label> First Name: </label>
-    <input type="text"  ngModel name="fname" required/>
+    <input type="text"  ngModel name="fname" required style="margin-left:10px"/>
 </div>
 <div>
 
     <label> Last Name: </label>
-    <input type="text" ngModel name="lname" required/>
+    <input type="text" ngModel name="lname" required style="margin-left:10px"/>
 </div>
 <div>
 
     <label> Job Title: </label>
-    <input type="text" ngModel name="jobTitle" required/>
+    <input type="text" ngModel name="jobTitle" required style="margin-left:10px"/>
 </div>
 
 <div>
 
     <label> Contract Start Date</label>
-    <input type="text-area" ngModel name="ctrctStartDt" required/>
+    <input type="text-area" ngModel name="ctrctStartDt" required style="margin-left:10px"/>
 </div>
 <div>
 
     <label> Contract End Date</label>
-    <input type="text-area" ngModel name="ctrctEndDt" required/>
+    <input type="text-area" ngModel name="ctrctEndDt" required style="margin-left:10px"/>
 </div>
 <div>
 
     <label> Employee Status: </label>
-    <input type="text" ngModel name="empStatus" required/>
+    <input type="text" ngModel name="empStatus" required style="margin-left:10px"/>
 </div>
 <div>
 
     <label> Designation: </label>
-    <input type="text" ngModel name="jobDivision" required/>
+    <input type="text" ngModel name="jobDivision" required style="margin-left:10px"/>
 </div>
 
 <div>
 
     <label> Admin Status: </label>
-    <input type="text" ngModel name="adminStatus" required/>
+    <input type="text" ngModel name="adminStatus" required style="margin-left:10px"/>
 </div>
 <div>
 
     <label> Payroll Status: </label>
-    <input type="text" ngModel name="payrollStatus" required/>
+    <input type="text" ngModel name="payrollStatus" required style="margin-left:10px"/>
 </div>
 <div>
 
     <label> IT Team Status: </label>
-    <input type="text" ngModel name="itStatus" required/>
+    <input type="text" ngModel name="itStatus" required style="margin-left:10px"/>
 </div>
 
-<input type="submit"  value="Submit Form">
+<input  type="submit"  value=" Send to Human Resources">
 
 </form>
 </div>
