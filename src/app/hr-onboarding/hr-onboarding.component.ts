@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OnboardingDAOService } from '../onboarding-dao.service';
 
 @Component({
   selector: 'app-hr-onboarding',
@@ -7,33 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HrOnboardingComponent implements OnInit {
 
-  empProfiles: EmpProfile[] =[
-    {employeeid:"1",job_description:"Test",job_classification:"Test",contract_startdt:"2021-02-01",job_location:"Toronto",designation:"Manager",isSelected:false}
-  ]
-  constructor() { }
+  empProfiles: EmpProfile[] = [];
+  constructor(private onboardingsrv : OnboardingDAOService) { }
 
   ngOnInit(): void {
-    this.getEmpProfiles();
+  //this.empProfiles = this.getEmpProfiles();
+  this.getEmpProfiles();
   }
   getEmpProfiles(){
    
-    this.empProfiles=[
-      {employeeid:"1",job_description:"Test",job_classification:"Test",contract_startdt:"2021-02-01",job_location:"Toronto",designation:"Manager",isSelected:false},
-      {employeeid:"2",job_description:"Test2",job_classification:"Test2",contract_startdt:"2021-02-10",job_location:"Toronto",designation:"Engineer",isSelected:false}
-    ]
+  this.onboardingsrv.getUsers().subscribe(data => this.empProfiles=data);
+   
   }
 
 }
 
 
 
-class EmpProfile {
+export class EmpProfile {
   employeeid :string="";
-  job_description:string="";
+  first_name:string="";
+  last_name:string="";
+  designation:string="";
+  hire_dt:string="";
   job_classification:string="";
   contract_startdt:string="";
-  job_location:string="";
-  designation:string="";
+  emp_status:string="";
+  
   isSelected:boolean=false;
 
 }

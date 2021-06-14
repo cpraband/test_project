@@ -3,7 +3,7 @@
 <div ng-controller="onboardingFormController" class="form-group" >
 
 <div  *ngIf="alert" class="alert alert-success alert-dismissable fade show" role="alert">
-    <strong>Data Saved Successfully.</strong> <br/>
+    <strong>Employee details sent to HR for further steps.</strong> <br/>
 
 </div>  
 <div  *ngIf="errorAlert" class="alert alert-success alert-dismissable fade show" role="alert">
@@ -29,7 +29,11 @@
     <label> Job Title: </label>
     <input type="text" ngModel name="jobTitle" required style="margin-left:10px"/>
 </div>
+<div>
 
+    <label> Hiring Date: </label>
+    <input type="text" ngModel name="hire_dt" required style="margin-left:10px"/>
+</div>
 <div>
 
     <label> Contract Start Date</label>
@@ -48,7 +52,7 @@
 <div>
 
     <label> Designation: </label>
-    <input type="text" ngModel name="jobDivision" required style="margin-left:10px"/>
+    <input type="text" ngModel name="designation" required style="margin-left:10px"/>
 </div>
 
 <div>

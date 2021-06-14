@@ -9,20 +9,24 @@
             Employee Id
         </td>
         <td style="text-decoration: underline;">
-            Job Description
+           First Name
         </td>
         <td style="text-decoration: underline;">
-            Job Classification
+            Last Name
+         </td>
+        <td style="text-decoration: underline;">
+            Designation
         </td>
         <td style="text-decoration: underline;">
            Joining Date
         </td>
         <td style="text-decoration: underline;">
-            Job Location
+            Job Classification
         </td>
         <td style="text-decoration: underline;">
-           Designation
+            Employee Status
         </td>
+       
     </tr>
        
 <tr class="object" *ngFor="let item of empProfiles ">
@@ -32,20 +36,24 @@
                 </td>
 
                 <td>
-                    {{item.job_description}}
+                    {{item.first_name}}
                 </td>
+                <td>
+                    {{item.last_name}}
+                </td>
+                <td>
+                    
+                    {{item.designation}}
+                </td>
+                <td>
+                    {{item.hire_dt}}
+                </td>
+
                 <td>
                     {{item.job_classification}}
                 </td>
                 <td>
-                    {{item.contract_startdt}}
-                </td>
-                <td>
-                    {{item.job_location}}
-                </td>
-
-                <td>
-                    {{item.designation}}
+                    {{item.emp_status}}
                 </td>
 
             </tr>
