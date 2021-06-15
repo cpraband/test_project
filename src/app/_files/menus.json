@@ -1,0 +1,7 @@
+[
+      {  "role":"hr" ,"name":"Start Onboarding","routerLink" : "hr-onboarding"},
+      { "role":"hr" , "name":" New Hires","routerLink" : "newHires"},
+      {  "role":"recruiter" ,"name":"Add New Hire","routerLink" : "onboarding-form"},
+      { "role":"recruiter" , "name":" New Hires","routerLink" : "newHires"},
+      { "role":"itadmin" , "name":"Search Users","routerLink" : "newHires"}
+]

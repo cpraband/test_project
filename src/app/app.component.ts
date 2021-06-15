@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthServiceService } from './auth-service.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,7 +9,7 @@ import { AuthServiceService } from './auth-service.service';
 })
 export class AppComponent {
   title = 'Rapid Road Employee Onboarding';
-
+ 
   constructor(public authSrv : AuthServiceService)
   {
 

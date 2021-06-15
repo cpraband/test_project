@@ -10,6 +10,7 @@ import { EmbeddedTemplateAst } from '@angular/compiler';
   providedIn: 'root'
 })
 export class OnboardingDAOService {
+  
 
   apiUrl: string = 'https://wviddpe1t9.execute-api.us-east-2.amazonaws.com/dev/userprofile';
   apiGetUrl: string = 'https://wviddpe1t9.execute-api.us-east-2.amazonaws.com/dev/userprofile?getUsers=true';
@@ -37,6 +38,10 @@ export class OnboardingDAOService {
     console.log( result);
    
     return result;
+  }
+
+  launchTasks (empProfiles: EmpProfile[]) {
+     console.log("Sending to Teams")
   }
 
   // Handle Errors 

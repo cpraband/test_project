@@ -39,6 +39,7 @@ import { HrOnboardingComponent } from './hr-onboarding/hr-onboarding.component';
     NoopAnimationsModule,
     MatToolbarModule,
     MatButtonModule
+   
   ],
   providers: [OnboardingDAOService],
   bootstrap: [AppComponent]

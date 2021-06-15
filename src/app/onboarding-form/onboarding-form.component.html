@@ -17,7 +17,7 @@
 <div>
 
     <label> First Name: </label>
-    <input type="text"  ngModel name="fname" required style="margin-left:10px"/>
+    <input type="text"  ngModel name="fname" required style="margin-left:10px" ng-required="true"/>
 </div>
 <div>
 
@@ -32,22 +32,28 @@
 <div>
 
     <label> Hiring Date: </label>
-    <input type="text" ngModel name="hire_dt" required style="margin-left:10px"/>
+    <input type="date" ngModel name="hire_dt" required style="margin-left:10px"/>
 </div>
 <div>
 
     <label> Contract Start Date</label>
-    <input type="text-area" ngModel name="ctrctStartDt" required style="margin-left:10px"/>
+    <input type="date" ngModel name="ctrctStartDt" required style="margin-left:10px"/>
 </div>
 <div>
 
     <label> Contract End Date</label>
-    <input type="text-area" ngModel name="ctrctEndDt" required style="margin-left:10px"/>
+    <input type="date" ngModel name="ctrctEndDt" required style="margin-left:10px"/>
 </div>
 <div>
 
     <label> Employee Status: </label>
-    <input type="text" ngModel name="empStatus" required style="margin-left:10px"/>
+
+        <select id="empStatus" ngModel name="empStatus"  required style="margin-left:10px" >
+            <option value="Pipelined"> Pipelined</option>
+            <option value="Hired"> Hired</option>
+            <option value="Terminated"> Termnated</option>
+        </select>
+ 
 </div>
 <div>
 
@@ -58,17 +64,30 @@
 <div>
 
     <label> Admin Status: </label>
-    <input type="text" ngModel name="adminStatus" required style="margin-left:10px"/>
+
+    <select id="adminStatus" ngModel name="adminStatus"  required style="margin-left:10px" >
+        <option value="Processing"> Processing</option>
+        <option value="Incomplete"> Incomplete</option>
+        <option value="Completed"> Completed</option>
+    </select>
 </div>
 <div>
 
     <label> Payroll Status: </label>
-    <input type="text" ngModel name="payrollStatus" required style="margin-left:10px"/>
+    <select id="payrollStatus" ngModel name="payrollStatus"  required style="margin-left:10px" >
+        <option value="Processing"> Processing</option>
+        <option value="Incomplete"> Incomplete</option>
+        <option value="Completed"> Completed</option>
+    </select>
 </div>
 <div>
 
     <label> IT Team Status: </label>
-    <input type="text" ngModel name="itStatus" required style="margin-left:10px"/>
+    <select id="itStatus" ngModel name="itStatus"  required style="margin-left:10px" >
+        <option value="Processing"> Processing</option>
+        <option value="Incomplete"> Incomplete</option>
+        <option value="Completed"> Completed</option>
+    </select>
 </div>
 
 <input  type="submit"  value=" Send to Human Resources">

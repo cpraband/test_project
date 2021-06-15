@@ -1,0 +1,8 @@
+[
+    {  "role":"itTasks" ,"name":"Laptop","id" : "laptop"},
+    { "role":"itTasks" , "name":"Mobile","id" : "mobile"},
+    {  "role":"itTasks" ,"name":"Email","id" : "email"},
+    { "role":"adminTasks" , "name":"Access Card","id" : "accessCard"},
+    { "role":"adminTasks" , "name":"ID Card","id" : "idCard"},
+    { "role":"adminTasks" , "name":"Parking Lot","id" : "parking"}
+]
