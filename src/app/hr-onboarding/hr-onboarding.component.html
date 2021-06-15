@@ -1,8 +1,8 @@
 
 
-<div  *ngIf="alert" class="alert alert-success alert-dismissable fade show" role="alert">
-    <strong>New Hire Details Sent to Respective Teams.</strong> <br/>
-
+<div  *ngIf="alert" class="alert alert-success alert-dismissable fade show" role="alert" style="width: 50%;">
+    <strong>New Hire Details Sent to Respective Teams.</strong>
+   <a class="spacer" (click)="alert=false"> X</a>
 </div>  
 
 <form  #hrForm="ngForm" (ngSubmit) = "submitEmpTasks(hrForm)" class="form-group">
@@ -84,8 +84,8 @@
             </td>
             <div *ngFor="let item of tasksList">
             <td>
-                <input *ngIf="item.role == 'itTasks'" type="checkbox" ngModel  name="{{item.id}}" value="{{item.id}}" id="{{item.id}}"/>
-               <label *ngIf="item.role == 'itTasks'" for="{{item.id}}">{{item.name}} </label> 
+                <input *ngIf="item.role == 'it'" type="checkbox" ngModel  name="{{item.id}}" value="{{item.id}}" id="{{item.id}}"/>
+               <label *ngIf="item.role == 'it'" for="{{item.id}}">{{item.name}} </label> 
             </td>
             </div>
         </tr>

@@ -18,6 +18,9 @@ import { LoginComponentComponent } from './login-component/login-component.compo
 import { NavbarComponent } from './navbar/navbar.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HrOnboardingComponent } from './hr-onboarding/hr-onboarding.component';
+import { SearchusersComponent } from './searchusers/searchusers.component';
+import { ItassignstatusComponent } from './itassignstatus/itassignstatus.component';
+import { FilterPipe } from './filter.pipe';
 
 
 @NgModule({
@@ -29,6 +32,9 @@ import { HrOnboardingComponent } from './hr-onboarding/hr-onboarding.component';
     LoginComponentComponent,
     NavbarComponent,
     HrOnboardingComponent,
+    SearchusersComponent,
+    ItassignstatusComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

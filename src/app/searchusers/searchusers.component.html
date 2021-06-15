@@ -1,0 +1,87 @@
+
+        Search User : <input type="text" [(ngModel)]="searchText" placeholder="Search by name"/><br/>
+        
+        <form>
+<table class="object">
+    
+    <tr >
+        
+        <td style="text-decoration: underline;">
+            Employee Id
+        </td>
+        <td style="text-decoration: underline;">
+           First Name
+        </td>
+        <td style="text-decoration: underline;">
+            Last Name
+         </td>
+        <td style="text-decoration: underline;">
+            Designation
+        </td>
+        <td style="text-decoration: underline;">
+           Joining Date
+        </td>
+        <td style="text-decoration: underline;">
+            Job Classification
+        </td>
+        <td style="text-decoration: underline;">
+            Employee Status
+        </td>
+       
+    </tr>
+    <tr class="object" *ngFor=" let item of empProfiles | filter:searchText" >
+   
+                <td>
+                 {{item.employeeid}}
+                </td>
+
+                <td>
+                    {{item.first_name}}
+                </td>
+                <td>
+                    {{item.last_name}}
+                </td>
+                <td>
+                    
+                    {{item.designation}}
+                </td>
+                <td>
+                    {{item.hire_dt}}
+                </td>
+
+                <td>
+                    {{item.job_classification}}
+                </td>
+                <td>
+                    {{item.emp_status}}
+                </td>
+
+              
+                        
+                        <td>Select All Completed :
+            
+                        </td>
+                        <td *ngFor="let item of tasksList">
+                       
+                       
+                            <input *ngIf="item.role == auth.usrrole" type="checkbox" ngModel  name="{{item.id}}" value="{{item.id}}" id="{{item.id}}"/>
+                           <label *ngIf="item.role == auth.usrrole" for="{{item.id}}">{{item.name}} </label> 
+                        
+                        </td>
+                       
+                    
+                    
+           
+            
+              
+              
+            </tr>
+
+       
+        
+    
+    </table>
+
+    <input type="submit" value="Mark As Completed"> 
+
+</form>
