@@ -8,7 +8,7 @@ import taskItems from '../_files/tasks.json';
   styleUrls: ['./hr-onboarding.component.css']
 })
 export class HrOnboardingComponent implements OnInit {
-  tasksList :{  role:string, name:string, id:string}[] = taskItems
+  tasksList :{  role:string, name:string, id:string, checked:boolean}[] = taskItems
   empProfiles: EmpProfile[] = [];
   constructor(private onboardingsrv : OnboardingDAOService) { }
   showTasks:boolean=false;
@@ -21,6 +21,7 @@ export class HrOnboardingComponent implements OnInit {
   getEmpProfiles(){
    
   this.onboardingsrv.getUsers().subscribe(data => this.empProfiles=data);
+  console.log(this.empProfiles)
    
   }
   showTasksDiv(){
@@ -33,14 +34,15 @@ export class HrOnboardingComponent implements OnInit {
   radioChangeHandler(event : any){
     console.log(event)
    this.selectedEmp = event.target.id
-   console.log(this.empProfiles)
+   
   }
 
   submitEmpTasks(hrform):  void{
     var index:string =hrform.value.empDetails;
     this.alert=true;
-    this.onboardingsrv.launchTasks(this.empProfiles);
-    hrform.reset();
+    
+    this.onboardingsrv.launchTasks(this.empProfiles, this.tasksList);
+   hrform.reset();
     
   }
 }
@@ -51,6 +53,9 @@ export class EmpProfile {
   employeeid :string="";
   first_name:string="";
   last_name:string="";
+  phone_no:string="";
+  email:string="";
+  supervisorid:string="";
   designation:string="";
   hire_dt:string="";
   job_classification:string="";

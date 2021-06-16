@@ -35,13 +35,19 @@ export class OnboardingDAOService {
   getUsers() : Observable<EmpProfile[]> {
     console.log(this.apiGetUrl)
     const result=this.http.get<EmpProfile[]>(`${this.apiGetUrl}`);
-    console.log( result);
+    
    
     return result;
   }
+  getUsersByStatus() : Observable<any>{
+    console.log(`${this.apiUrl}`+'?getUsersByStatus=true')
+    const result=this.http.get<EmpProfile[]>(`${this.apiUrl}`+'?getUsersByStatus=true');
+    return result;
+  }
 
-  launchTasks (empProfiles: EmpProfile[]) {
-     console.log("Sending to Teams")
+  launchTasks (empProfiles: EmpProfile[] , tasksList:{  role:string, name:string, id:string, checked:boolean} []) {
+     console.log(empProfiles)
+     console.log(tasksList)
   }
 
   // Handle Errors 

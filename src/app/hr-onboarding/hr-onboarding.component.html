@@ -21,6 +21,15 @@
         <td style="text-decoration: underline;">
             Last Name
          </td>
+         <td style="text-decoration: underline;">
+           Phone Number
+         </td>
+         <td style="text-decoration: underline;">
+            Email Address
+         </td>
+         <td style="text-decoration: underline;">
+           Manager ID
+         </td>
         <td style="text-decoration: underline;">
             Designation
         </td>
@@ -46,6 +55,15 @@
                 </td>
                 <td>
                     {{item.last_name}}
+                </td>
+                <td>
+                    {{item.phone_no}}
+                </td>
+                <td>
+                    {{item.email}}
+                </td>
+                <td>
+                    {{item.supervisorid}}
                 </td>
                 <td>
                     
@@ -84,7 +102,7 @@
             </td>
             <div *ngFor="let item of tasksList">
             <td>
-                <input *ngIf="item.role == 'it'" type="checkbox" ngModel  name="{{item.id}}" value="{{item.id}}" id="{{item.id}}"/>
+                <input *ngIf="item.role == 'it'" type="checkbox" ngModel  name="{{item.id}}" value="{{item.id}}" id="{{item.id}}" [(ngModel)]="item.checked"/>
                <label *ngIf="item.role == 'it'" for="{{item.id}}">{{item.name}} </label> 
             </td>
             </div>
@@ -94,7 +112,7 @@
         </td>
         <div *ngFor="let item of tasksList">
         <td>
-            <input *ngIf="item.role == 'adminTasks'" type="checkbox" ngModel  name="{{item.id}}" value="{{item.id}}" id="{{item.id}}"/>
+            <input *ngIf="item.role == 'adminTasks'" type="checkbox" ngModel  name="{{item.id}}" value="{{item.id}}" id="{{item.id}}" [(ngModel)]="item.checked"/>
            <label *ngIf="item.role == 'adminTasks'" for="{{item.id}}">{{item.name}} </label> 
         </td>
    </div>

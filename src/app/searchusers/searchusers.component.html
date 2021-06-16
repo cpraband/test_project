@@ -15,6 +15,9 @@
         <td style="text-decoration: underline;">
             Last Name
          </td>
+         <td style="text-decoration: underline;">
+            Supervisor ID
+         </td>
         <td style="text-decoration: underline;">
             Designation
         </td>
@@ -42,6 +45,9 @@
                     {{item.last_name}}
                 </td>
                 <td>
+                    {{item.supervisorid}}
+                </td>
+                <td>
                     
                     {{item.designation}}
                 </td>
@@ -58,7 +64,7 @@
 
               
                         
-                        <td>Select All Completed :
+                        <td *ngIf="auth.usrrole == 'it'">Select All Completed :
             
                         </td>
                         <td *ngFor="let item of tasksList">

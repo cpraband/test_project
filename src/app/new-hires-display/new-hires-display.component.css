@@ -16,3 +16,15 @@
     bottom: -5px;
     z-index: -1;
   }
+  .box0{
+    background-color: pink;
+  }
+  .box1{
+    background-color: orange;
+  }
+  .box2{
+    background-color: violet;
+  }
+  .box3{
+    background-color: greenyellow;
+  }

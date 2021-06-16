@@ -9,7 +9,7 @@ export class FilterPipe implements PipeTransform {
     if(term == '') return value;
     
     return value.filter(function(v){
-      return v.first_name.toLowerCase()==term.toLowerCase();
+      return v.first_name.toLowerCase().includes(term.toLowerCase());
     })
   }
 

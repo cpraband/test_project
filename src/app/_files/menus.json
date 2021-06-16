@@ -3,5 +3,8 @@
       { "role":"hr" , "name":"Status Board","routerLink" : "newHires"},
       {  "role":"recruiter" ,"name":"Add New Hire","routerLink" : "onboarding-form"},
       { "role":"recruiter" , "name":"Status Board","routerLink" : "newHires"},
-      { "role":"it" , "name":"Search New Hires","routerLink" : "searchUsers"}
+      { "role":"recruiter" , "name":"Search New Hires","routerLink" : "searchUsers"},
+      { "role":"it" , "name":"Status Board","routerLink" : "home"},
+      { "role":"it" , "name":"Status Update","routerLink" : "searchUsers"}
 ]
+

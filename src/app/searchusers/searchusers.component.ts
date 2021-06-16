@@ -31,6 +31,9 @@ export class EmpProfile {
   employeeid :string="";
   first_name:string="";
   last_name:string="";
+  phone_no:string="";
+  email:string="";
+  supervisorid:string="";
   designation:string="";
   hire_dt:string="";
   job_classification:string="";

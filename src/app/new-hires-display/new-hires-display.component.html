@@ -1,57 +1,98 @@
 
-<div>
-
-    NEW HIRE ONBOARDING REPORT
-</div> <br>
-
+ <br>
+ <div *ngIf="authSrv.usrrole == 'recruiter'">
 <table class="object">
     <tr>
-        <td >
-            <div> Pipelined</div>
-            <div  class="object" style="background-color: pink;">
-                <strong>
-                    15
+        <td *ngFor="let item of statusBoardList ; index as i">
+            <div> {{item.emp_status}}</div>
+            <div  class="object box{{i}}">
+                <strong >
+                    {{item.status_ct}}
                 </strong> 
+               
             
             </div>  
         </td>
-        <td>
-            <div> Interviewed</div>
-            <div  class="object" style="background-color: lightblue;">
-                <strong>
-                    7
-                </strong> 
-            
-            </div>  
-        </td>
-        <td>
-            <div> Offered</div>
-            <div  class="object" style="background-color: orange;">
-                <strong>
-                    5
-                </strong> 
-            
-            </div>  
-        </td>
-        <td>
-            <div> Accepted</div>
-            <div  class="object" style="background-color: violet;">
-                <strong>
-                    8
-                </strong> 
-            
-            </div>  
-        </td>
-        <td>
-            <div> Onboard</div>
-            <div  class="object" style="background-color: greenyellow;">
-                <strong>
-                    0
-                </strong> 
-            
-            </div>  
-        </td>
+       
     </tr>
 </table>
+</div>
 
+<div *ngIf="authSrv.usrrole == 'hr'">
+<div style="text-align: center; width: 50%;"> <p>ONBOARDING DASHBOARD</p>
+
+    <table class="object">
+        <tr>
+            <td></td>
+            <td>HR</td>
+            <td>Payroll</td>
+            <td>Security</td>
+            <td>Admin</td>
+            <td> IT </td>
+        </tr>
+        <tr >
+            <td> Received </td>
+            <td *ngFor="let item of onboardingStatusBoardList ; index as i">
+                <div  class="object" style="background-color: lightblue;">
+                    <strong >
+                        {{item.recvdCt}}
+                    </strong> 
+                   
+                </div>  
+            </td>
+           
+        </tr>
+        <tr >
+            <td> Completed </td>
+            <td *ngFor="let item of onboardingStatusBoardList ; index as i">
+                <div  class="object " style="background-color: green;">
+                    <strong >
+                        {{item.completed_ct}}
+                    </strong> 
+                   
+                </div>  
+            </td>
+           
+        </tr>
+    </table>
+</div>
+</div>
+
+
+
+<div *ngIf="authSrv.usrrole == 'it'">
+    <div style=" width: 50%;"> <p>ONBOARDING DASHBOARD</p>
+    
+        <table class="object">
+            <tr>
+                
+                <td>Total Tasks</td>
+                <td>Processing</td>
+                <td>Completed </td>
+            </tr>
+            <tr >
+                <td> <div  class="object " style="background-color: lightseagreen;">
+                    <strong >
+                        10
+                    </strong> 
+                   
+                </div>  </td>
+                <td> <div  class="object " style="background-color: yellow;">
+                    <strong >
+                        4
+                    </strong> 
+                   
+                </div>  </td>
+                <td> <div  class="object " style="background-color: green;">
+                    <strong >
+                       6
+                    </strong> 
+                   
+                </div>   </td>
+               
+            </tr>
+        </table>
+    </div>
+    </div>
+    
 
