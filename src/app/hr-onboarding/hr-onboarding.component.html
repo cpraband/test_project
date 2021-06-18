@@ -37,15 +37,16 @@
            Joining Date
         </td>
         <td style="text-decoration: underline;">
-            Job Classification
+            Job Title
         </td>
         <td style="text-decoration: underline;">
-            Employee Status
+            Employee Type
         </td>
+        
        
     </tr>
     <tr class="object" *ngFor="let item of empProfiles " >
-    <input type="checkbox" [(ngModel)]="item.isSelected" name="empDetails" value="{{item.employeeid}}" id="{{item.employeeid}}" (click)="showTasksDiv()" (change)="radioChangeHandler($event)"/>
+    <input type="checkbox" [(ngModel)]="item.isSelected" name="empDetails" value="{{item.employeeid}}" id="{{item.employeeid}}" (click)="showTasksDiv()"/>
                 <td>
                  <label for="{{item.employeeid}}">  {{item.employeeid}}</label> 
                 </td>
@@ -74,16 +75,14 @@
                 </td>
 
                 <td>
-                    {{item.job_classification}}
+                    {{item.job_title}}
                 </td>
                 <td>
-                    {{item.emp_status}}
+                    {{item.emp_type}}
                 </td>
               
             </tr>
-
-       
-        
+ 
     
     </table>
 

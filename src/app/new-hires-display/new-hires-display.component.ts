@@ -8,7 +8,7 @@ import { OnboardingDAOService } from '../onboarding-dao.service';
   styleUrls: ['./new-hires-display.component.css']
 })
 export class NewHiresDisplayComponent implements OnInit {
-  statusBoardList : {status_ct:string, emp_status:string}[]=[];
+  statusBoardList : {status_ct:string, candidate_status:string}[]=[];
   onboardingStatusBoardList : {recvdCt : string, completed_ct:string}[] = [
     {
       recvdCt:'10',completed_ct:"4"

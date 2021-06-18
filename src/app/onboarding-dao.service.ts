@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { EmpProfile } from './hr-onboarding/hr-onboarding.component';
 import { EmbeddedTemplateAst } from '@angular/compiler';
+import { AuthServiceService } from './auth-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +14,12 @@ export class OnboardingDAOService {
   
 
   apiUrl: string = 'https://wviddpe1t9.execute-api.us-east-2.amazonaws.com/dev/userprofile';
-  apiGetUrl: string = 'https://wviddpe1t9.execute-api.us-east-2.amazonaws.com/dev/userprofile?getUsers=true';
+  apiGetUrl: string = 'https://wviddpe1t9.execute-api.us-east-2.amazonaws.com/dev/userprofile?getUsers=true&role=';
 
   
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authSrv : AuthServiceService) { }
 
   // Create
   createTask(data): Observable<any> {
@@ -32,9 +33,9 @@ export class OnboardingDAOService {
   }
 
   // Read
-  getUsers() : Observable<EmpProfile[]> {
-    console.log(this.apiGetUrl)
-    const result=this.http.get<EmpProfile[]>(`${this.apiGetUrl}`);
+  getUsers(role:string) : Observable<EmpProfile[]> {
+    console.log(`${this.apiGetUrl}`+role)
+    const result=this.http.get<EmpProfile[]>(`${this.apiGetUrl}`+role);
     
    
     return result;
@@ -45,9 +46,17 @@ export class OnboardingDAOService {
     return result;
   }
 
-  launchTasks (empProfiles: EmpProfile[] , tasksList:{  role:string, name:string, id:string, checked:boolean} []) {
+  launchTasks (empProfiles: EmpProfile[] , tasksList:{  role:string, name:string, id:string, checked:boolean} [], updDt: any) : Observable<any>  {
      console.log(empProfiles)
      console.log(tasksList)
+     var empIds:string[]=[];
+     empProfiles.forEach(x => {if(x.isSelected) empIds.push(x.employeeid)})
+     let API_URL = `${this.apiUrl}`;
+     return this.http.post(API_URL, {"empIds" : empIds.toString(), "updatedDt":updDt , "updatedBy": this.authSrv.usrrole})
+     .pipe(
+       catchError(this.error)
+     )
+
   }
 
   // Handle Errors 

@@ -4,6 +4,7 @@ import {Pipe} from '@angular/core';
 import {FilterPipe} from '../filter.pipe'
 import taskItems from '../_files/tasks.json';
 import {AuthServiceService} from  '../auth-service.service';
+import {EmpProfile} from '../hr-onboarding/hr-onboarding.component';
 
 @Component({
   selector: 'app-searchusers',
@@ -18,28 +19,12 @@ export class SearchusersComponent implements OnInit {
   constructor(private onboardingsrv : OnboardingDAOService, public auth : AuthServiceService) { }
   ngOnInit(): void {
     //this.empProfiles = this.getEmpProfiles();
-    this.getEmpProfiles();
+    this.getEmpProfiles(this.auth.usrrole);
     }
-    getEmpProfiles(){
+    getEmpProfiles(role:string){
      
-    this.onboardingsrv.getUsers().subscribe(data => this.empProfiles=data);
+    this.onboardingsrv.getUsers(role).subscribe(data => this.empProfiles=data);
      
     }
 }
 
-export class EmpProfile {
-  employeeid :string="";
-  first_name:string="";
-  last_name:string="";
-  phone_no:string="";
-  email:string="";
-  supervisorid:string="";
-  designation:string="";
-  hire_dt:string="";
-  job_classification:string="";
-  contract_startdt:string="";
-  emp_status:string="";
-  
-  isSelected:boolean=false;
-
-}
