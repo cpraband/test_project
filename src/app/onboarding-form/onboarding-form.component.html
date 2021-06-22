@@ -12,14 +12,53 @@
     <br/>
 
 </div>    
-   <form #onboardinForm="ngForm" (ngSubmit) = "submitEmpFormFunc(onboardinForm)">
+
+
+<div style="margin : 10px 10px 50px 10px">
+    <div style="background-color: lightgray; "> 
+<label> Please upload candidate details using excel file:</label><br/>
+    </div>
+    <input type="file" appReadExcel (eventEmitter)="readExcelData($event)" /> <br/>
+</div>
+
+<form #onboardinForm="ngForm" (ngSubmit) = "submitEmpFormFunc(onboardinForm)">
+
+<div class="subheader"> Candidate Personal Details :</div>
+    <div>
+
+        <label> First Name: </label>
+        <input type="text"  [(ngModel)]="empProfiles.first_name"  name="fname" required style="margin-left:10px"/>
+    </div>
+
+    <div>
+
+        <label> Last Name: </label>
+        <input type="text" [(ngModel)]="empProfiles.last_name"  ngModel name="lname" required style="margin-left:10px"/>
+    </div>
+    <div>
+
+        <label> Email Address: </label>
+        <input type="text" [(ngModel)]="empProfiles.email"  name="email" required style="margin-left:10px"/>
+    </div>
+    <div>
+
+        <label> Phone number: </label>
+        <input type="text" [(ngModel)]="empProfiles.phone_no"  name="phoneno" required style="margin-left:10px"/>
+    </div>
+   
+
+    <div class="subheader"> Other Candidate Details :</div>
 <div *ngFor="let item of fieldsList">
     
         <div *ngIf="item.type !='select'">
 
             <label> {{item.value}} : </label>
-            <input type="{{item.type}}"  ngModel name="{{item.name}}" required style="margin-left:10px" ng-required="true"/>
+            <input type="{{item.type}}" name="{{item.name}}"  required style="margin-left:10px" ng-required="true"/>
         </div>
+
+
+
+
         <div *ngIf="item.name == 'candidateStatus'">
 
             <label> Candidate Status: </label>

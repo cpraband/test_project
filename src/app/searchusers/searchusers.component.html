@@ -1,7 +1,12 @@
 
-        Search User : <input type="text" [(ngModel)]="searchText" placeholder="Search by name"/><br/>
+        <br/>Search User : <input type="text" [(ngModel)]="searchText" placeholder="Search by name"/><br/>
+
+        <div  *ngIf="alert" class="alert alert-success alert-dismissable fade show" role="alert">
+    <strong>Task updated successfully for the selected employees.</strong> <a class="spacer" (click)="alert=false"> X</a> 
+
+</div> 
         
-        <form>
+        <form #updateForm="ngForm" (ngSubmit) = "submitTasks(updateForm)" class="form-group" > 
 <table class="object">
     
     <tr >
@@ -25,12 +30,17 @@
            Joining Date
         </td>
         <td style="text-decoration: underline;">
-            Job Classification
+            Job Title
         </td>
         <td style="text-decoration: underline;">
-            Employee Status
+            Employee Type
         </td>
-       
+        <td *ngIf="auth.usrrole == 'it'">
+            Select all completed
+        </td>
+        <td *ngIf="auth.usrrole == 'recruiter'">
+            Select Candidate Status
+        </td>
     </tr>
     <tr class="object" *ngFor=" let item of empProfiles | filter:searchText" >
    
@@ -52,26 +62,36 @@
                     {{item.designation}}
                 </td>
                 <td>
-                    {{item.hire_dt}}
+                    {{item.contract_startdt}}
                 </td>
 
                 <td>
-                    {{item.job_classification}}
+                    {{item.job_title}}
                 </td>
                 <td>
-                    {{item.emp_status}}
+                    {{item.emp_type}}
+                </td>
+                <td *ngIf="auth.usrrole == 'recruiter'">
+
+                        <label> Candidate Status: </label>
+                    
+                            <select id="candidateStatus"  [(ngModel)]="item.candidate_status" [ngModelOptions]="{standalone: true}" required style="margin-left:10px" >
+                                <option value="Pipelined"> Pipelined</option>
+                                <option value="Interviewed"> Interviewed</option>
+                                <option value="Offered"> Offered</option>
+                                <option value="Hired"> Hired</option>
+                                <option value="Onboard"> Onboard</option>
+                                <option value="Terminated"> Termnated</option>
+                            </select>
+                     
                 </td>
 
-              
-                        
-                        <td *ngIf="auth.usrrole == 'it'">Select All Completed :
-            
-                        </td>
-                        <td *ngFor="let item of tasksList">
+                       
+                        <td *ngFor="let i of tasksList">
                        
                        
-                            <input *ngIf="item.role == auth.usrrole" type="checkbox" ngModel  name="{{item.id}}" value="{{item.id}}" id="{{item.id}}"/>
-                           <label *ngIf="item.role == auth.usrrole" for="{{item.id}}">{{item.name}} </label> 
+                            <input *ngIf="i.role == auth.usrrole" type="checkbox" ngModel  [(ngModel)]="item.isSelected" name="{{i.name}}{{item.employeeid}}" value="{{item.employeeid}}" id="{{item.employeeid}}" />
+                           <label *ngIf="i.role == auth.usrrole" for="{{item.employeeid}}">{{i.name}} </label> 
                         
                         </td>
                        
@@ -88,6 +108,10 @@
     
     </table>
 
-    <input type="submit" value="Mark As Completed"> 
+    <input type="submit" value="Update Employee Details"> 
 
 </form>
+
+
+
+<app-new-hires-display></app-new-hires-display>

@@ -1,8 +1,5 @@
 [
-    { "role":"recruiter" ,"name":"fname","type" : "text", "value": "First Name"},
-    { "role":"recruiter" ,"name":"lname","type" : "text", "value": "Last Name"},
-    { "role":"recruiter" ,"name":"email","type" : "text", "value": "Email Address"},
-    { "role":"recruiter" ,"name":"phoneno","type" : "text", "value": "Phone Number"},
+   
     { "role":"recruiter" ,"name":"managerid","type" : "text", "value": "Manager Id"},
     { "role":"recruiter" ,"name":"jobTitle","type" : "text", "value": "Job Title"},
     { "role":"recruiter" ,"name":"hireDt","type" : "date", "value": "Hiring Date"},

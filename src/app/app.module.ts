@@ -21,6 +21,7 @@ import { HrOnboardingComponent } from './hr-onboarding/hr-onboarding.component';
 import { SearchusersComponent } from './searchusers/searchusers.component';
 import { ItassignstatusComponent } from './itassignstatus/itassignstatus.component';
 import { FilterPipe } from './filter.pipe';
+import { ReadExcelDirective } from './directives/read-excel.directive';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { FilterPipe } from './filter.pipe';
     SearchusersComponent,
     ItassignstatusComponent,
     FilterPipe,
+    ReadExcelDirective,
   ],
   imports: [
     BrowserModule,

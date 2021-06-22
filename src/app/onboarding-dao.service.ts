@@ -40,9 +40,9 @@ export class OnboardingDAOService {
    
     return result;
   }
-  getUsersByStatus() : Observable<any>{
-    console.log(`${this.apiUrl}`+'?getUsersByStatus=true')
-    const result=this.http.get<EmpProfile[]>(`${this.apiUrl}`+'?getUsersByStatus=true');
+  getUsersByStatus(role) : Observable<any>{
+    console.log(`${this.apiUrl}`+'?getUsersByStatus=true&role='+ role)
+    const result=this.http.get<EmpProfile[]>(`${this.apiUrl}`+'?getUsersByStatus=true&role='+ role);
     return result;
   }
 
@@ -50,9 +50,19 @@ export class OnboardingDAOService {
      console.log(empProfiles)
      console.log(tasksList)
      var empIds:string[]=[];
-     empProfiles.forEach(x => {if(x.isSelected) empIds.push(x.employeeid)})
+     if(this.authSrv.usrrole == 'recruiter')
+     {
+      empProfiles.forEach(x => {empIds.push(x.employeeid+':'+x.candidate_status)})
+     }
+       
+      
+      else{
+        empProfiles.forEach(x => {if(x.isSelected) empIds.push(x.employeeid)})
+      }
+        console.log(empIds.toString())
+
      let API_URL = `${this.apiUrl}`;
-     return this.http.post(API_URL, {"empIds" : empIds.toString(), "updatedDt":updDt , "updatedBy": this.authSrv.usrrole})
+     return this.http.post(API_URL, {"empIds" : empIds.toString(), "updatedDt":updDt , "updatedBy": this.authSrv.usrrole , "role": this.authSrv.usrrole })
      .pipe(
        catchError(this.error)
      )

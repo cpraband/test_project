@@ -1,8 +1,18 @@
 
  <br>
- <div *ngIf="authSrv.usrrole == 'recruiter'">
+ <div *ngIf="authSrv.usrrole != 'hr'">
 <table class="object">
     <tr>
+        <td>
+            <div> Total Tasks</div>
+            <div class="object total"> 
+                <strong> {{total}}
+
+            </strong>
+            </div>
+        </td>
+            
+           
         <td *ngFor="let item of statusBoardList ; index as i">
             <div> {{item.candidate_status}}</div>
             <div  class="object box{{i}}">
@@ -58,41 +68,4 @@
 </div>
 </div>
 
-
-
-<div *ngIf="authSrv.usrrole == 'it'">
-    <div style=" width: 50%;"> <p>ONBOARDING DASHBOARD</p>
-    
-        <table class="object">
-            <tr>
-                
-                <td>Total Tasks</td>
-                <td>Processing</td>
-                <td>Completed </td>
-            </tr>
-            <tr >
-                <td> <div  class="object " style="background-color: lightseagreen;">
-                    <strong >
-                        10
-                    </strong> 
-                   
-                </div>  </td>
-                <td> <div  class="object " style="background-color: yellow;">
-                    <strong >
-                        4
-                    </strong> 
-                   
-                </div>  </td>
-                <td> <div  class="object " style="background-color: green;">
-                    <strong >
-                       6
-                    </strong> 
-                   
-                </div>   </td>
-               
-            </tr>
-        </table>
-    </div>
-    </div>
-    
 

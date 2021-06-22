@@ -8,7 +8,8 @@ import { OnboardingDAOService } from '../onboarding-dao.service';
   styleUrls: ['./new-hires-display.component.css']
 })
 export class NewHiresDisplayComponent implements OnInit {
-  statusBoardList : {status_ct:string, candidate_status:string}[]=[];
+  statusBoardList : {totalCt:number, status_ct:string, candidate_status:string}[]=[];
+   total: number = 0;
   onboardingStatusBoardList : {recvdCt : string, completed_ct:string}[] = [
     {
       recvdCt:'10',completed_ct:"4"
@@ -30,7 +31,14 @@ export class NewHiresDisplayComponent implements OnInit {
   constructor(private onboardingsrv: OnboardingDAOService, public authSrv : AuthServiceService) { }
 
   ngOnInit(): void {
-    this.onboardingsrv.getUsersByStatus().subscribe(data => this.statusBoardList=data);
+    this.onboardingsrv.getUsersByStatus(this.authSrv.usrrole).subscribe(data =>  {this.statusBoardList=data
+      this.statusBoardList.forEach(x => {
+        this.total=this.total+ parseInt(x.status_ct, 10)
+      });
+     
+    });
+    
+   
   }
 
 }

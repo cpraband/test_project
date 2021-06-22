@@ -16,6 +16,9 @@
     bottom: -5px;
     z-index: -1;
   }
+  .total{
+    background-color: red;
+  }
   .box0{
     background-color: pink;
   }

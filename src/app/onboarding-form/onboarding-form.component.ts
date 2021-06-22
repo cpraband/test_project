@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthServiceService } from '../auth-service.service';
 import { OnboardingDAOService } from '../onboarding-dao.service';
 import rbacItems from '../_files/rbac.json';
 import { DatePipe } from '@angular/common';
-
+import * as XLSX from 'xlsx';
+import { FormGroup, NgForm } from '@angular/forms';
+import { EmpProfile } from '../hr-onboarding/hr-onboarding.component';
 
 @Component({
   selector: 'app-onboarding-form',
@@ -16,6 +18,9 @@ import { DatePipe } from '@angular/common';
 export class OnboardingFormComponent implements OnInit {
 
   alert:boolean = false;
+  empProfiles: EmpProfile = new EmpProfile();
+  
+   excelData : string[][]=new Array();
   fieldsList:{ "role":string ,"name":string,"type" : string, "value": string}[]=rbacItems;
   errorAlert:boolean = false;
   myDate = new Date();
@@ -30,7 +35,18 @@ export class OnboardingFormComponent implements OnInit {
    
    
   }
+  readExcelData(data) {
+  this.excelData=data;
+  console.log(this.excelData);
+  this.empProfiles.first_name=data[1][0];
+  this.empProfiles.last_name=data[1][1];
+  this.empProfiles.email=data[1][4];
+  this.empProfiles.phone_no=data[1][3];
+  
 
+  }
+  
+  
   
   submitEmpFormFunc(formValue): void{
   

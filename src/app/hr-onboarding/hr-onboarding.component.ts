@@ -66,6 +66,7 @@ export class EmpProfile {
   job_title:string="";
   emp_type:string="";
   contract_startdt:string="";
+  candidate_status:string="";
   isSelected:boolean=false;
 
 }
