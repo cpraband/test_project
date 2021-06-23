@@ -19,6 +19,8 @@ export class OnboardingFormComponent implements OnInit {
 
   alert:boolean = false;
   empProfiles: EmpProfile = new EmpProfile();
+  invalidForm :boolean=false;
+  invalidFormMes:string="Please check the required fields before submitting."
   
    excelData : string[][]=new Array();
   fieldsList:{ "role":string ,"name":string,"type" : string, "value": string}[]=rbacItems;
@@ -54,7 +56,8 @@ export class OnboardingFormComponent implements OnInit {
   formValue.value.updatedBy=this.authSrv.usrrole;
   formValue.value.createdDt= this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
   formValue.value.updatedDt=this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
-    this.daoservice.createTask(formValue.value).subscribe(
+  if( formValue.valid){
+  this.daoservice.createTask(formValue.value).subscribe(
       response => {console.log('submitted')
       formValue.reset();
       this.alert=true
@@ -64,7 +67,11 @@ export class OnboardingFormComponent implements OnInit {
       //formValue.reset();
       }
     );
-     
+    }
+    else{
+      console.log("form is invalid")
+      this.invalidForm=true;
+    }
     
   }
 

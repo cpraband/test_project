@@ -1,3 +1,13 @@
 .subheader{
     background-color: lightgray; padding : 10px 10px 10px 10px;  margin : 10px 10px 50px 10px;
 }
+.requiredError{
+    color: red;
+    
+}
+
+.alert-fail {
+    color: red;
+    background-color: #e6d3c3;
+    border-color: #e6d3c3;
+}

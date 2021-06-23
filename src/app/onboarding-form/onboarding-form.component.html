@@ -3,20 +3,26 @@
 <div ng-controller="onboardingFormController" class="form-group" >
 
 <div  *ngIf="alert" class="alert alert-success alert-dismissable fade show" role="alert">
-    <strong>Employee details sent to HR for further steps.</strong> <a class="spacer" (click)="alert=false"> X</a> 
+    <strong>Employee details sent to HR for further steps.</strong> <a class="spacer" (click)="alert=false" style="cursor: pointer;"> X</a> 
 
 </div>  
-<div  *ngIf="errorAlert" class="alert alert-success alert-dismissable fade show" role="alert">
+<div  *ngIf="errorAlert" class="alert alert-fail alert-dismissable fade show" role="alert">
     <strong>Error. Please contact Admin.</strong>
-    <a class="spacer" (click)="errorAlert=false"> X</a> 
+    <a class="spacer" (click)="errorAlert=false" style="cursor: pointer;"> X</a> 
     <br/>
 
 </div>    
+<div  *ngIf="invalidForm" class="alert alert-fail alert-dismissable fade show" role="alert">
+    <strong>{{invalidFormMes}}</strong>
+    <a class="spacer" (click)="invalidForm=false" style="cursor: pointer;"> X</a> 
+    <br/>
+
+</div> 
 
 
 <div style="margin : 10px 10px 50px 10px">
     <div style="background-color: lightgray; "> 
-<label> Please upload candidate details using excel file:</label><br/>
+<label> You can choose to upload candidate details using excel file:</label><br/>
     </div>
     <input type="file" appReadExcel (eventEmitter)="readExcelData($event)" /> <br/>
 </div>
@@ -26,67 +32,73 @@
 <div class="subheader"> Candidate Personal Details :</div>
     <div>
 
-        <label> First Name: </label>
-        <input type="text"  [(ngModel)]="empProfiles.first_name"  name="fname" required style="margin-left:10px"/>
+        <label> First Name: </label> <label class="requiredError"> * </label>
+        <input type="text"  [(ngModel)]="empProfiles.first_name"  name="fname" required style="margin-left:10px" #fnameCtrl="ngModel"/>
+       <span *ngIf="fnameCtrl.invalid && fnameCtrl.touched" class="requiredError"> First Name is required</span>
     </div>
 
     <div>
 
-        <label> Last Name: </label>
-        <input type="text" [(ngModel)]="empProfiles.last_name"  ngModel name="lname" required style="margin-left:10px"/>
+        <label> Last Name: </label><label class="requiredError"> * </label>
+        <input type="text" [(ngModel)]="empProfiles.last_name"  ngModel name="lname" required style="margin-left:10px" #lnameCtrl="ngModel"/>
+        <span *ngIf="lnameCtrl.invalid && lnameCtrl.touched" class="requiredError"> Last Name is required</span>
     </div>
     <div>
 
-        <label> Email Address: </label>
-        <input type="text" [(ngModel)]="empProfiles.email"  name="email" required style="margin-left:10px"/>
+        <label> Email Address: </label><label class="requiredError"> * </label>
+        <input type="text" [(ngModel)]="empProfiles.email"  name="email" required style="margin-left:10px" #emailCtrl="ngModel"/>
+        <span *ngIf="emailCtrl.invalid && emailCtrl.touched" class="requiredError"> Email is required</span>
     </div>
     <div>
 
-        <label> Phone number: </label>
-        <input type="text" [(ngModel)]="empProfiles.phone_no"  name="phoneno" required style="margin-left:10px"/>
+        <label> Phone number: </label><label class="requiredError"> * </label>
+        <input type="text" [(ngModel)]="empProfiles.phone_no"  name="phoneno" required style="margin-left:10px" #phoneCtrl="ngModel"/>
+        <span *ngIf="phoneCtrl.invalid && phoneCtrl.touched" class="requiredError"> Phone Number is required</span>
     </div>
    
 
     <div class="subheader"> Other Candidate Details :</div>
 <div *ngFor="let item of fieldsList">
     
+
+
+
+    <div *ngIf="item.name == 'candidateStatus'">
+
+        <label> Candidate Status: </label><label class="requiredError"> * </label>
+    
+            <select id="candidateStatus" ngModel name="candidateStatus"  required style="margin-left:10px"  >
+                <option value="Pipelined"> Pipelined</option>
+                <option value="Interviewed"> Interviewed</option>
+                <option value="Offered"> Offered</option>
+                <option value="Hired"> Hired</option>
+                <option value="Onboard"> Onboard</option>
+                <option value="Terminated"> Termnated</option>
+            </select>
+     
+    </div>
+    <div  *ngIf="item.name == 'empType'">
+    
+        <label> Employee Type: </label><label class="requiredError"> * </label>
+    
+            <select id="empType" ngModel name="empType"  required style="margin-left:10px" >
+                <option value="PartTime"> Part Time</option>
+                <option value="FullTime"> Full Time</option>
+                
+            </select>
+     
+    </div>
         <div *ngIf="item.type !='select'">
 
             <label> {{item.value}} : </label>
-            <input type="{{item.type}}" name="{{item.name}}"  required style="margin-left:10px" ng-required="true"/>
+            <input type="{{item.type}}" name="{{item.name}}"   style="margin-left:10px" ng-required="true" />
         </div>
 
 
 
-
-        <div *ngIf="item.name == 'candidateStatus'">
-
-            <label> Candidate Status: </label>
-        
-                <select id="candidateStatus" ngModel name="candidateStatus"  required style="margin-left:10px" >
-                    <option value="Pipelined"> Pipelined</option>
-                    <option value="Interviewed"> Interviewed</option>
-                    <option value="Offered"> Offered</option>
-                    <option value="Hired"> Hired</option>
-                    <option value="Onboard"> Onboard</option>
-                    <option value="Terminated"> Termnated</option>
-                </select>
-         
-        </div>
-        <div  *ngIf="item.name == 'empType'">
-        
-            <label> Employee Type: </label>
-        
-                <select id="empType" ngModel name="empType"  required style="margin-left:10px" >
-                    <option value="PartTime"> Part Time</option>
-                    <option value="FullTime"> Full Time</option>
-                    
-                </select>
-         
-        </div>
         <div *ngIf="item.name == 'empStatus'">
         
-            <label> Employee Status: </label>
+            <label> Employee Status: </label><label class="requiredError"> * </label>
         
                 <select id="empStatus" ngModel name="empStatus"  required style="margin-left:10px" >
                     <option value="Active"> Active</option>
@@ -101,7 +113,7 @@
         
             <label> Admin Status: </label>
         
-            <select id="adminStatus" ngModel name="adminStatus"  required style="margin-left:10px" >
+            <select id="adminStatus" ngModel name="adminStatus"   style="margin-left:10px" >
                 <option value="Processing"> Processing</option>
                 <option value="Incomplete"> Incomplete</option>
                 <option value="Completed"> Completed</option>
@@ -110,7 +122,7 @@
         <div *ngIf="item.name == 'payrollStatus'">
         
             <label> Payroll Status: </label>
-            <select id="payrollStatus" ngModel name="payrollStatus"  required style="margin-left:10px" >
+            <select id="payrollStatus" ngModel name="payrollStatus"   style="margin-left:10px" >
                 <option value="Processing"> Processing</option>
                 <option value="Incomplete"> Incomplete</option>
                 <option value="Completed"> Completed</option>
@@ -119,7 +131,7 @@
         <div *ngIf="item.name == 'itStatus'">
         
             <label> IT Team Status: </label>
-            <select id="itStatus" ngModel name="itStatus"  required style="margin-left:10px" >
+            <select id="itStatus" ngModel name="itStatus"   style="margin-left:10px" >
                 <option value="Processing"> Processing</option>
                 <option value="Incomplete"> Incomplete</option>
                 <option value="Completed"> Completed</option>
