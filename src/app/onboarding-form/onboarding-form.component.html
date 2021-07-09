@@ -91,7 +91,7 @@
         <div *ngIf="item.type !='select'">
 
             <label> {{item.value}} : </label>
-            <input type="{{item.type}}" name="{{item.name}}"   style="margin-left:10px" ng-required="true" />
+            <input type="{{item.type}}" ngModel name="{{item.name}}"   style="margin-left:10px" ng-required="true" />
         </div>
 
 

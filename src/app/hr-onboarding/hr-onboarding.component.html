@@ -30,6 +30,12 @@
          <td style="text-decoration: underline;">
            Manager ID
          </td>
+         <td style="text-decoration: underline;">
+            Department ID
+          </td>
+          <td style="text-decoration: underline;">
+            Job Location
+          </td>
         <td style="text-decoration: underline;">
             Designation
         </td>
@@ -67,6 +73,12 @@
                     {{item.supervisorid}}
                 </td>
                 <td>
+                    {{item.department}}
+                </td>
+                <td>
+                    {{item.joblocation}}
+                </td>
+                <td>
                     
                     {{item.designation}}
                 </td>
@@ -90,7 +102,7 @@
 <div *ngIf="showTasks" id="launchTasks" >
     
 
-    Send Individual requirements to departments for the new hire :  Employee ID  : {{ selectedEmp}}
+    Send Individual requirements to departments for the new hire :
 
     <table class="object">
         

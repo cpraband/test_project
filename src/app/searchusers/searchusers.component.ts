@@ -16,7 +16,8 @@ import { DatePipe } from '@angular/common';
 export class SearchusersComponent implements OnInit {
   empProfiles: EmpProfile[] = [];
   searchText:string="";
-  tasksList :{  role:string, name:string, id:string, checked:boolean}[] = taskItems
+  tasksList :{  role:string, name:string, id:string, checked:boolean , empid:string}[] = taskItems
+  checkedItems : string[] =[];
   alert:boolean =false;
   constructor(private onboardingsrv : OnboardingDAOService, public auth : AuthServiceService, private datePipe: DatePipe) { }
   ngOnInit(): void {
@@ -29,14 +30,27 @@ export class SearchusersComponent implements OnInit {
     this.onboardingsrv.getUsers(role).subscribe(data => this.empProfiles=data);
      
     }
-
+    onChange(e){
+      let empid =e.target.id.split(':')[0]
+      let taskname =e.target.id.split(':')[1]
+      
+      if(e.target.checked){
+        this.checkedItems.push(e.target.id)
+      }
+      else{
+       let index= this.checkedItems.findIndex(x=>x==e.target.id)
+       this.checkedItems.splice(index,1)
+      }
+      console.log(this.checkedItems)
+    }
     submitTasks(hrform):  void{
       var index:string =hrform.value.empDetails;
       this.alert=true;
       var myDate = new Date();
       var updDt = this.datePipe.transform(myDate, 'yyyy-MM-dd');
       console.log(this.empProfiles)
-       this.onboardingsrv.launchTasks(this.empProfiles, this.tasksList, updDt).subscribe(
+      console.log(this.tasksList)
+      this.onboardingsrv.updateStatus(this.checkedItems, updDt).subscribe(
         response => {console.log(response)
         
         //this.alert=true

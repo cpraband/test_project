@@ -62,6 +62,8 @@ export class EmpProfile {
   email:string="";
   supervisorid:string="";
   designation:string="";
+  joblocation:string="";
+  department:string="";
   hire_dt:string="";
   job_title:string="";
   emp_type:string="";

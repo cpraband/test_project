@@ -76,6 +76,16 @@ export class OnboardingDAOService {
 
   }
 
+  updateStatus(checkedItems :string[], updDt: any) : Observable<any>  {
+    console.log(checkedItems)
+    let API_URL = `${this.apiUrl}`;
+    return this.http.post(API_URL, {"updateStatus" : checkedItems.toString(), "updatedDt":updDt , "updatedBy": this.authSrv.usrrole , "role": this.authSrv.usrrole })
+    .pipe(
+      catchError(this.error)
+    )
+
+ }
+
   // Handle Errors 
   error(error: HttpErrorResponse) {
     let errorMessage = '';

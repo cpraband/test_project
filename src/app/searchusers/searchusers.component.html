@@ -27,6 +27,12 @@
             Designation
         </td>
         <td style="text-decoration: underline;">
+            Job Location
+        </td>
+        <td style="text-decoration: underline;">
+            Department
+        </td>
+        <td style="text-decoration: underline;">
            Joining Date
         </td>
         <td style="text-decoration: underline;">
@@ -62,6 +68,14 @@
                     {{item.designation}}
                 </td>
                 <td>
+                    
+                    {{item.joblocation}}
+                </td>
+                <td>
+                    
+                    {{item.department}}
+                </td>
+                <td>
                     {{item.contract_startdt}}
                 </td>
 
@@ -90,7 +104,7 @@
                         <td *ngFor="let i of tasksList">
                        
                        
-                            <input *ngIf="i.role == auth.usrrole" type="checkbox" ngModel  [(ngModel)]="item.isSelected" name="{{i.name}}{{item.employeeid}}" value="{{item.employeeid}}" id="{{item.employeeid}}" />
+                            <input *ngIf="i.role == auth.usrrole" type="checkbox" ngModel  name="chkSelect" value="{{item.employeeid}}" id="{{i.name}}:{{item.employeeid}}" (change)="onChange($event)" />
                            <label *ngIf="i.role == auth.usrrole" for="{{item.employeeid}}">{{i.name}} </label> 
                         
                         </td>
