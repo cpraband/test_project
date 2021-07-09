@@ -6,6 +6,20 @@
     margin: 10px;
     text-align: center;
   }
+  .listobject{
+    position: relative;
+    width: 100%;
+    border: 1px solid black;
+    padding: 5px;
+    margin: 10px;
+    text-align: center;
+  }
+  table tr:nth-child(odd) {
+    background-color: #f1f1f1;
+  }
+  table tr:nth-child(even) {
+    background-color: #ffffff;
+  }
   
   .object:before {
     background-color: red;
@@ -18,20 +32,26 @@
   }
   .total{
     background-color: red;
+    cursor: pointer;
   }
   .box0{
     background-color: pink;
+    cursor: pointer;
   }
   .box1{
     background-color: orange;
+    cursor: pointer;
   }
   .box2{
     background-color: violet;
+    cursor: pointer;
   }
   .box3{
     background-color: lightblue;
+    cursor: pointer;
   }
  
   .box4{
     background-color: greenyellow;
+    cursor: pointer;
   }

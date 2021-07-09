@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from '../auth-service.service';
+import { EmpProfile } from '../hr-onboarding/hr-onboarding.component';
 import { OnboardingDAOService } from '../onboarding-dao.service';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-new-hires-display',
@@ -9,6 +11,8 @@ import { OnboardingDAOService } from '../onboarding-dao.service';
 })
 export class NewHiresDisplayComponent implements OnInit {
   statusBoardList : {totalCt:number, status_ct:string, candidate_status:string}[]=[];
+  empProfiles :EmpProfile[] =[]
+  showEmpList:boolean=false
    total: number = 0;
   onboardingStatusBoardList : {recvdCt : string, completed_ct:string}[] = [
     {
@@ -39,6 +43,26 @@ export class NewHiresDisplayComponent implements OnInit {
     });
     
    
+  }
+  getEmployees(e) {
+    
+    let status = e.target.id;
+    console.log(status)
+
+    this.onboardingsrv.getEmployeeListByStatus(status,this.authSrv.usrrole).subscribe(data =>  {this.empProfiles=data;
+      console.log(data)
+      this.showEmpList=true;
+     });
+
+  }
+
+  exportToExcel(){
+    let element = document.getElementById("excel-table");
+    const ws : XLSX.WorkSheet = XLSX.utils.table_to_sheet(element)
+    const wb : XLSX.WorkBook = XLSX.utils.book_new()
+    XLSX.utils.book_append_sheet(wb,ws,'Employee Data')
+    XLSX.writeFile(wb,'DownloadedData.xlsx')
+
   }
 
 }

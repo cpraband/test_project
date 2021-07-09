@@ -14,12 +14,11 @@
             
            
         <td *ngFor="let item of statusBoardList ; index as i">
-            <div> {{item.candidate_status}}</div>
-            <div  class="object box{{i}}">
+            <div > {{item.candidate_status}}</div>
+            <div  class="object box{{i}}" id="{{item.candidate_status}}" (click)="getEmployees($event)">
                 <strong >
                     {{item.status_ct}}
                 </strong> 
-               
             
             </div>  
         </td>
@@ -31,7 +30,7 @@
 <div *ngIf="authSrv.usrrole == 'hr'">
 <div style="text-align: center; width: 50%;"> <p>ONBOARDING DASHBOARD</p>
 
-    <table class="object">
+    <table class="object" >
         <tr>
             <td></td>
             <td>HR</td>
@@ -68,4 +67,72 @@
 </div>
 </div>
 
+<br/>
 
+
+<div *ngIf="showEmpList">
+    <span style="margin-left: 10px;"><button (click)="exportToExcel()"> Export Data</button></span>
+    <table class="listobject" id="excel-table">
+    
+        <tr >
+            
+            <td style="text-decoration: underline;">
+                Employee Id
+            </td>
+            <td style="text-decoration: underline;">
+               First Name
+            </td>
+            <td style="text-decoration: underline;">
+                Last Name
+             </td>
+             <td style="text-decoration: underline;">
+                Supervisor ID
+             </td>
+            <td style="text-decoration: underline;">
+                Designation
+            </td>
+            <td style="text-decoration: underline;">
+               Joining Date
+            </td>
+            <td style="text-decoration: underline;">
+                Job Title
+            </td>
+            <td style="text-decoration: underline;">
+                Employee Type
+            </td>
+           
+        </tr>
+        <tr class="object" *ngFor=" let item of empProfiles " >
+       
+                    <td>
+                     {{item.employeeid}}
+                    </td>
+    
+                    <td>
+                        {{item.first_name}}
+                    </td>
+                    <td>
+                        {{item.last_name}}
+                    </td>
+                    <td>
+                        {{item.supervisorid}}
+                    </td>
+                    <td>
+                        
+                        {{item.designation}}
+                    </td>
+                    <td>
+                        {{item.contract_startdt}}
+                    </td>
+    
+                    <td>
+                        {{item.job_title}}
+                    </td>
+                    <td>
+                        {{item.emp_type}}
+                    </td>
+            </tr>
+            </table>
+            
+
+    </div>

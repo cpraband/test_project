@@ -1,13 +1,13 @@
 [
-   
+    {"role" : "recruiter", "name":"candidateStatus", "type":"select" , "value":"Candidate Status"},
+    {"role" : "recruiter", "name":"empType", "type":"select" , "value":"Employee Type"},
     { "role":"recruiter" ,"name":"managerid","type" : "text", "value": "Manager Id"},
     { "role":"recruiter" ,"name":"jobTitle","type" : "text", "value": "Job Title"},
     { "role":"recruiter" ,"name":"hireDt","type" : "date", "value": "Hiring Date"},
     { "role":"recruiter" ,"name":"ctrctStartDt","type" : "date", "value": "Contract Start Date"},
     { "role":"recruiter" ,"name":"ctrctEndDt","type" : "date", "value": "Contract End Date"},
-    { "role":"recruiter" ,"name":"designation","type" : "text", "value": "Designation"},
-    {"role" : "recruiter", "name":"candidateStatus", "type":"select" , "value":"Candidate Status"},
-    {"role" : "recruiter", "name":"empType", "type":"select" , "value":"Employee Type"}
+    { "role":"recruiter" ,"name":"designation","type" : "text", "value": "Designation"}
+   
    
 ]
 

@@ -12,6 +12,7 @@ import { AuthServiceService } from './auth-service.service';
 })
 export class OnboardingDAOService {
   
+  
 
   apiUrl: string = 'https://wviddpe1t9.execute-api.us-east-2.amazonaws.com/dev/userprofile';
   apiGetUrl: string = 'https://wviddpe1t9.execute-api.us-east-2.amazonaws.com/dev/userprofile?getUsers=true&role=';
@@ -43,6 +44,12 @@ export class OnboardingDAOService {
   getUsersByStatus(role) : Observable<any>{
     console.log(`${this.apiUrl}`+'?getUsersByStatus=true&role='+ role)
     const result=this.http.get<EmpProfile[]>(`${this.apiUrl}`+'?getUsersByStatus=true&role='+ role);
+    return result;
+  }
+
+  getEmployeeListByStatus(status: any, usrrole: string)  : Observable<any>{
+    const result=this.http.get<EmpProfile[]>(`${this.apiUrl}`+'?getEmployees=true&role='+usrrole+"&status="+status);
+    console.log(result);
     return result;
   }
 
